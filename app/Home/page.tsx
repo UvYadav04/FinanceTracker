@@ -15,9 +15,9 @@ function page() {
     const { expenses, setexpenses } = useArray()
     const [data, setdata] = useState<Transaction[]>([])
     const getdata = async () => {
-        alert("getting data")
+        // alert("getting data")
         setloading(true)
-        const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
+        const response = await fetch("https://finance-tracker-91za.vercel.app/server", {
             method: "GET"
         })
         setloading(false)

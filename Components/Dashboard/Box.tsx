@@ -29,7 +29,7 @@ function Box({ item }: { item: iteminterface }) {
 
     const deleteitem = async (id: string) => {
         setloading(true)
-        const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
+        const response = await fetch("https://finance-tracker-91za.vercel.app/server", {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application.json'
@@ -77,7 +77,7 @@ function Box({ item }: { item: iteminterface }) {
             return alert("Enter all data")
 
         setloading(true)
-        const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
+        const response = await fetch("https://finance-tracker-91za.vercel.app/server", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
