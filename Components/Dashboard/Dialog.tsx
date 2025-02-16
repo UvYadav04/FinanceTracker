@@ -14,7 +14,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@../ui/select"
+} from "../ui/select"
 
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
