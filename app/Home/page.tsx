@@ -15,19 +15,25 @@ function page() {
     const { expenses, setexpenses } = useArray()
     const [data, setdata] = useState<Transaction[]>([])
     const getdata = async () => {
+        alert("getting data")
         setloading(true)
         const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
             method: "GET"
         })
         setloading(false)
 
-        if (!response.ok)
+        if (!response.ok) {
+            console.log(response)
+            console.log("problem in response")
             redirect("/error")
+        }
 
         const data = await response.json()
 
-        if (!data.success)
+        if (!data.success) {
+            console.log(data)
             redirect("/error")
+        }
 
         // console.log(data)
 

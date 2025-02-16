@@ -18,6 +18,7 @@ async function connectdb(): Promise<void> {
         console.log("database connected")
 
     } catch (error) {
+        console.log(error)
         console.log("error in connecting db")
         // process.exit(1)
     }
