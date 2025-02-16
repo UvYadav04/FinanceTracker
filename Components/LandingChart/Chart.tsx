@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryTheme } from "victory";
 import { categoryAmountInterface } from "./LandingChart";
 
+// Define the interface for categoryAmountInterface if not already defined
+interface categoryAmountInterface {
+    category: string;
+    totalAmount: number;
+}
+
 const Chart = ({ chart }: { chart: categoryAmountInterface[] }) => {
     const [chartWidth, setChartWidth] = useState(window.innerWidth * 1);
     const [domainPadding, setDomainPadding] = useState(20);
@@ -27,7 +33,7 @@ const Chart = ({ chart }: { chart: categoryAmountInterface[] }) => {
 
     // Calculate Y-Axis domain to prevent zooming out, leaving space for the bars
     const maxAmount = Math.max(...chart.map((item) => item.totalAmount));
-    const yAxisDomain = [0, maxAmount + maxAmount * 0.2]; // 20% margin above the highest value
+    const yAxisDomain: [number, number] = [0, maxAmount + maxAmount * 0.2]; // 20% margin above the highest value
 
     return (
         <div className="w-full flex justify-center">
