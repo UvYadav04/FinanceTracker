@@ -115,7 +115,12 @@ function Box({ item }: { item: iteminterface }) {
     else
         return (
             <div className='lg:w-64 md:w-80 sm:w-72 md:mb-5 mb-2 w-full py-2 px-3 text-black border-[1px] flex flex-col gap-2 border-black rounded-md bg-slate-200'>
-                <select name="category" id="category" value={update.category} onChange={changedata}>
+                <select name="category" id="category" value={update.category} onChange={(e) => {
+                    const { name, value } = e.target
+                    setupdate((prev) => {
+                        return { ...prev, name: value }
+                    })
+                }}>
                     {categories.map((item) => <option value={item} key={item}>{item}</option>)}
                 </select>
                 <input type="number" name='amount' min={0} value={update.amount} onChange={changedata} placeholder='Enter amount' />
@@ -125,7 +130,7 @@ function Box({ item }: { item: iteminterface }) {
                     <button className='text-sm' onClick={() => setedit(false)}>Cancel</button>
                     <button className='bg-teal-300 text-white px-2 text-sm' onClick={updatedata}>Update</button>
                 </div>
-            </div>
+            </div >
         )
 }
 
