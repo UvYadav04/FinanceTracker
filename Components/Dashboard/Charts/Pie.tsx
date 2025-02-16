@@ -1,7 +1,9 @@
 import React from 'react';
 import { VictoryLabel, VictoryPie, VictoryTheme } from 'victory';
 
-const PieChartExample = ({ chart }) => {
+import { MonthAmount } from '../Dashboard';
+
+const PieChartExample = ({ chart }: { chart: MonthAmount[] }) => {
     const totalAmount = chart.reduce((sum, item) => sum + item.totalAmount, 0);
 
     const formattedData = chart.map((item, index) => ({

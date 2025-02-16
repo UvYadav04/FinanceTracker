@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryTheme } from "victory";
-
-const BarChart = ({ chart }) => {
+import { MonthAmount } from "../Dashboard";
+const BarChart = ({ chart }: { chart: MonthAmount[] }) => {
     const [chartWidth, setChartWidth] = useState(window.innerWidth * 0.9);
     const [domainPadding, setDomainPadding] = useState(20);
 

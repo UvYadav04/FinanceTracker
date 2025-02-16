@@ -4,7 +4,9 @@ import PieChart from './Charts/Pie';
 import BarChart from './Charts/Bar';
 import Compare from './Charts/Compare';
 
-const Chart = ({ chart }) => {
+import { MonthAmount } from './Dashboard';
+
+const Chart = ({ chart }: { chart: MonthAmount[] }) => {
     // console.log(chart)
     const [type, settype] = useState<number>(0)
     return (

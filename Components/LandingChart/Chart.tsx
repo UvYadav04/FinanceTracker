@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryTheme } from "victory";
+import { categoryAmountInterface } from "./LandingChart";
 
-const Chart = ({ chart }) => {
+const Chart = ({ chart }: { chart: categoryAmountInterface[] }) => {
     const [chartWidth, setChartWidth] = useState(window.innerWidth * 1);
     const [domainPadding, setDomainPadding] = useState(20);
 

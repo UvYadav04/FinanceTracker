@@ -29,7 +29,7 @@ export async function PUT(req: NextRequest) {
     try {
         await connectdb();
         const data = await req.json();
-        await expenses.findOneAndUpdate({ _id: data.id }, data);
+        await expenses.findOneAndUpdate({ _id: data._id }, data);
         const alldata = await expenses.find({});
         return NextResponse.json({ success: true, data: alldata });
     } catch (error) {

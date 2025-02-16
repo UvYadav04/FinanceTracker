@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryTheme } from "victory";
+import { MergedInterface } from "./Compare";
 
-const MergedBar = ({ chartData }) => {
+const MergedBar = ({ chartData }: { chartData: MergedInterface[] }) => {
     const [chartWidth, setChartWidth] = useState(window.innerWidth * 0.9);
     const [domainPadding, setDomainPadding] = useState(20);
 
@@ -21,7 +22,7 @@ const MergedBar = ({ chartData }) => {
     }
 
     // Calculate total amount and budget for each category
-    const totalAmount = chartData.reduce((sum, item) => sum + item.totalAmount, 0);
+    const totalAmount = chartData.reduce((sum: number, item: MergedInterface) => sum + item.totalAmount, 0);
     if (totalAmount === 0)
         return <div className="text-slate-500 text-xl">No data to visualize</div>;
 

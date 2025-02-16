@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Chart from './Chart';
-// List of categories to initialize with 0 amount
 const categories = [
     "Stationary", "Groceries", "Entertainment", "Transport", "Health & Wellness",
     "Dining", "Subscriptions", "Electronics", "Education", "Rent", "Utilities",
     "Shopping", "Personal Care", "Travel", "Insurance", "Miscellaneous"
 ];
-function LandingChart({ chart }) {
 
+export interface categoryAmountInterface {
+    category: string,
+    totalAmount: number
+}
 
-    const [chartdata, setchartdata] = useState([]);
-
-
-
+import { MonthAmount, Transaction } from '../Dashboard/Dashboard';
+function LandingChart({ chart }: { chart: Transaction[] }) {
+    const [chartdata, setchartdata] = useState<categoryAmountInterface[]>([]);
 
     useEffect(() => {
         setchartdata(aggregateByCategory(chart))
@@ -28,8 +29,11 @@ function LandingChart({ chart }) {
 
 export default LandingChart
 
-export const aggregateByCategory = (data) => {
-    const categoryAmountMap = {};
+
+import { MonthAmountMap } from '../Dashboard/Dashboard';
+
+export const aggregateByCategory = (data: Transaction[]) => {
+    const categoryAmountMap: MonthAmountMap = {};
     console.log(data)
 
     // Initialize all categories with 0 amount

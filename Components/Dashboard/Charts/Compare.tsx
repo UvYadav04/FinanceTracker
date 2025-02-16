@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { aggregateByCategory } from '@/Components/LandingChart/LandingChart';
+import { aggregateByCategory, categoryAmountInterface } from '@/Components/LandingChart/LandingChart';
 import { useArray } from '@/ContextProvider/Chartdata';
 import MergedBar from './MergedBar';
+import { MonthAmountMap, Transaction } from '../Dashboard';
+import { MonthAmount } from '../Dashboard';
+export interface MergedInterface {
+    category: string,
+    totalAmount: number,
+    budget: number
+}
 
 function Compare() {
-    const [chartdata, setchartdata] = useState<Array<Object>>([])
-    const [mergeddata, setmergeddata] = useState<Array<Object>>([])
+    const [chartdata, setchartdata] = useState<categoryAmountInterface[]>([])
+    const [mergeddata, setmergeddata] = useState<MergedInterface[]>([])
     const { expenses } = useArray()
-    const monthlyBudgets = {
+    const monthlyBudgets: MonthAmountMap = {
         "Stationary": 1000,
         "Groceries": 5000,
         "Entertainment": 3000,
@@ -27,7 +34,7 @@ function Compare() {
     };
 
     useEffect(() => {
-        const mergedData = chartdata.map(item => ({
+        const mergedData = chartdata.map((item: categoryAmountInterface) => ({
             category: item.category,
             totalAmount: item.totalAmount,
             budget: monthlyBudgets[item.category] || 0, // Default to 0 if no budget is found

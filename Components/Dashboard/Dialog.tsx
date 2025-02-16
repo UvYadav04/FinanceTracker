@@ -18,7 +18,7 @@ import {
 
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
-import { useState } from "react"
+import React, { useState } from "react"
 import { redirect } from "next/navigation"
 import Loader from "../Loader/Loader"
 import { useArray } from "@/ContextProvider/Chartdata"
@@ -51,7 +51,7 @@ export function DialogDemo() {
     const { expenses, setexpenses } = useArray()
     const [newdata, setnewdata] = useState<data>({ amount: 0, description: "", category: "", date: "" });
     const [loading, setloading] = useState<boolean>(false)
-    const changedata = (e) => {
+    const changedata = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setnewdata((prev) => {
             return { ...prev, [name]: value };

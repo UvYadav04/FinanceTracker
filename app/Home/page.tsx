@@ -7,11 +7,13 @@ import { useArray } from '@/ContextProvider/Chartdata'
 import { redirect } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
+import { Transaction } from '../../Components/Dashboard/Dashboard'
+
 function page() {
     const [loading, setloading] = useState<boolean>(false)
     const [datagot, setgot] = useState<boolean>(false)
     const { expenses, setexpenses } = useArray()
-    const [data, setdata] = useState<Array<Object>>([])
+    const [data, setdata] = useState<Transaction[]>([])
     const getdata = async () => {
         setloading(true)
         const response = await fetch("http://localhost:3000/server", {

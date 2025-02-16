@@ -1,17 +1,25 @@
 import { useArray } from '@/ContextProvider/Chartdata';
 import { redirect } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { HTMLInputTypeAttribute, useEffect, useState } from 'react'
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 
-function Box({ item }: { item: any }) {
+interface iteminterface {
+    _id: string,
+    category: string,
+    amount: number,
+    description: string,
+    date: string
+}
+
+function Box({ item }: { item: iteminterface }) {
     const categories = ["Stationary", "Groceries", "Entertainment", "Transport", "Health & Wellness", "Dining", "Subscriptions", "Electronics", "Education", "Rent", "Utilities", "Shopping", "Personal Care", "Travel", "Insurance", "Miscellaneous"];
     const [loading, setloading] = useState<boolean>(false)
     const { setexpenses } = useArray()
     const [edit, setedit] = useState<boolean>(false)
-    const [update, setupdate] = useState<Object>({})
+    const [update, setupdate] = useState<iteminterface>({ _id: "", amount: 0, description: "", category: "", date: "" })
 
-    const getdate = (date) => {
+    const getdate = (date: string) => {
         const newdate = new Date(date)
         const year = newdate.getFullYear()
         const month = newdate.getMonth()
@@ -19,7 +27,7 @@ function Box({ item }: { item: any }) {
         return `${day}-${month + 1}-${year}`
     }
 
-    const deleteitem = async (id) => {
+    const deleteitem = async (id: string) => {
         setloading(true)
         const response = await fetch("http://localhost:3000/server", {
             method: "DELETE",
@@ -41,7 +49,7 @@ function Box({ item }: { item: any }) {
         setexpenses(data.data)
     }
 
-    const changedata = (e) => {
+    const changedata = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setupdate((prev) => {
             return { ...prev, [name]: value };
@@ -51,7 +59,7 @@ function Box({ item }: { item: any }) {
     useEffect(() => {
         if (item) {
             setupdate({
-                id: item._id,
+                _id: item._id,
                 category: item.category,
                 amount: item.amount,
                 description: item.description,
