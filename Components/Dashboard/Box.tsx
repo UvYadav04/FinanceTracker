@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 
-function Box({ item }) {
+function Box({ item }: { item: any }) {
     const categories = ["Stationary", "Groceries", "Entertainment", "Transport", "Health & Wellness", "Dining", "Subscriptions", "Electronics", "Education", "Rent", "Utilities", "Shopping", "Personal Care", "Travel", "Insurance", "Miscellaneous"];
     const [loading, setloading] = useState<boolean>(false)
     const { setexpenses } = useArray()
