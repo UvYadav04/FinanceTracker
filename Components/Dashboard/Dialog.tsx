@@ -77,7 +77,7 @@ export function DialogDemo() {
         if (newdata.date === "")
             return enableerror(2)
         setloading(true)
-        const response = await fetch("http://localhost:3000/server", {
+        const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
             method: "POST",
             headers: {
                 'Content-Type': 'application.json'

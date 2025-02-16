@@ -16,7 +16,7 @@ function page() {
     const [data, setdata] = useState<Transaction[]>([])
     const getdata = async () => {
         setloading(true)
-        const response = await fetch("http://localhost:3000/server", {
+        const response = await fetch("https://finance-tracker-czkp.vercel.app/server", {
             method: "GET"
         })
         setloading(false)
