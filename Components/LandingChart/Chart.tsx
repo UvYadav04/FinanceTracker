@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryTheme } from "victory";
 import { categoryAmountInterface } from "./LandingChart";
 
-// Define the interface for categoryAmountInterface if not already defined
-interface categoryAmountInterface {
-    category: string;
-    totalAmount: number;
-}
+
 
 const Chart = ({ chart }: { chart: categoryAmountInterface[] }) => {
     const [chartWidth, setChartWidth] = useState(window.innerWidth * 1);
